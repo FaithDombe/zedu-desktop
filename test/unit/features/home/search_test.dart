@@ -1,7 +1,6 @@
+import '../../../helpers/helpers.dart';
 import 'package:zedu/core/core.dart';
 import 'package:zedu/features/features.dart';
-import '../../../../helpers/helpers.dart';
-import 'package:zedu/features/home/data/models/search_result_item.dart';
 import 'package:zedu/features/home/data/repositories/search_repository_impl.dart';
 
 class MockApiBaseService extends Mock implements ApiBaseService {}

@@ -173,7 +173,7 @@ class _SearchPanelState extends ConsumerState<SearchPanel> {
                         decoration: BoxDecoration(
                           color: isSelected
                               ? colors.primary
-                              : colors.surface,
+                              : colors.background,
                           borderRadius: BorderRadius.circular(16),
                           border: Border.all(
                             color: isSelected ? colors.primary : colors.divider,
@@ -399,7 +399,7 @@ class _SearchPanelState extends ConsumerState<SearchPanel> {
                                       vertical: 2,
                                     ),
                                     decoration: BoxDecoration(
-                                      color: colors.surface,
+                                      color: colors.primaryBg,
                                       borderRadius: BorderRadius.circular(4),
                                       border:
                                           Border.all(color: colors.divider),

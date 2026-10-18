@@ -1,8 +1,6 @@
 import 'package:zedu/core/core.dart';
 import 'package:zedu/features/features.dart';
-import '../../data/models/search_result_item.dart';
 import '../../data/repositories/search_repository_impl.dart';
-import '../../domain/repositories/search_repository.dart';
 
 final searchRepositoryProvider = Provider<SearchRepository>((ref) {
   final apiBaseService = locator<ApiBaseService>();
