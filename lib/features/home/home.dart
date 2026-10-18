@@ -12,4 +12,3 @@ export 'presentation/widgets/invite_teammates_modal.dart';
 export 'data/models/search_result_item.dart';
 export 'domain/repositories/search_repository.dart';
 export 'presentation/presentation.dart';
-

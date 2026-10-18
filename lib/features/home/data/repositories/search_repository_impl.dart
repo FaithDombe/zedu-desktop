@@ -35,7 +35,7 @@ class SearchRepositoryImpl implements SearchRepository {
       final data = response.data;
       final rawList = data['data'] ?? data['results'] ?? data['messages'];
 
-      final list = (rawList is List ? rawList : const <dynamic>[])
+      final list = (rawList is List<dynamic> ? rawList : const <dynamic>[])
           .whereType<Map<String, dynamic>>()
           .map(SearchResultItem.fromJson)
           .toList();

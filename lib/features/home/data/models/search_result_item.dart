@@ -55,8 +55,8 @@ class SearchResultItem {
           user['username'] as String? ??
           user['email'] as String? ??
           'Member';
-      authorAvatar = user['avatar_url'] as String? ??
-          user['profile_picture'] as String?;
+      authorAvatar =
+          user['avatar_url'] as String? ?? user['profile_picture'] as String?;
     } else if (json['author_name'] is String) {
       authorName = json['author_name'] as String;
     } else if (json['username'] is String) {
@@ -99,16 +99,22 @@ class SearchResultItem {
         json['dm_id']?.toString() ??
         json['recipient_id']?.toString();
 
+    final channel = json['channel'];
+    final channelName =
+        channel is Map<String, dynamic> ? channel['name'] as String? : null;
+
     final conversationTitle = json['conversation_title'] as String? ??
         json['channel_name'] as String? ??
-        (json['channel'] is Map ? json['channel']['name'] as String? : null);
+        channelName;
 
     final rawType = json['type'] as String? ??
         json['conversation_type'] as String? ??
         'channel';
 
     final category = json['category'] as String? ??
-        (json['file_url'] != null ? 'file' : (json['is_channel'] == true ? 'channel' : 'message'));
+        (json['file_url'] != null
+            ? 'file'
+            : (json['is_channel'] == true ? 'channel' : 'message'));
 
     return SearchResultItem(
       id: id,

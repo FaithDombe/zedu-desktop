@@ -15,7 +15,9 @@ void main() {
           'name': 'Faith Dombe',
           'avatar_url': 'https://example.com/avatar.png',
         },
-        'created_at': DateTime.now().subtract(const Duration(minutes: 5)).toIso8601String(),
+        'created_at': DateTime.now()
+            .subtract(const Duration(minutes: 5))
+            .toIso8601String(),
         'conversation_id': 'channel_general',
         'channel_name': 'general',
         'type': 'channel',
@@ -78,7 +80,9 @@ void main() {
       repository = SearchRepositoryImpl(apiBaseService: mockApiService);
     });
 
-    test('returns Success<List<SearchResultItem>> when API returns search results', () async {
+    test(
+        'returns Success<List<SearchResultItem>> when API returns search results',
+        () async {
       final mockData = {
         'status': 'success',
         'data': [

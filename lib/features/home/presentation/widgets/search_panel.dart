@@ -118,10 +118,12 @@ class _SearchPanelState extends ConsumerState<SearchPanel> {
               decoration: InputDecoration(
                 hintText: 'Search messages, channels, files...',
                 hintStyle: TextStyle(color: colors.textHint, fontSize: 13),
-                prefixIcon: Icon(Icons.search, color: colors.textHint, size: 20),
+                prefixIcon:
+                    Icon(Icons.search, color: colors.textHint, size: 20),
                 suffixIcon: _searchController.text.isNotEmpty
                     ? IconButton(
-                        icon: Icon(Icons.clear, size: 18, color: colors.textHint),
+                        icon:
+                            Icon(Icons.clear, size: 18, color: colors.textHint),
                         onPressed: _clearSearch,
                         splashRadius: 16,
                         tooltip: 'Clear input',
@@ -171,9 +173,8 @@ class _SearchPanelState extends ConsumerState<SearchPanel> {
                           vertical: 6,
                         ),
                         decoration: BoxDecoration(
-                          color: isSelected
-                              ? colors.primary
-                              : colors.background,
+                          color:
+                              isSelected ? colors.primary : colors.background,
                           borderRadius: BorderRadius.circular(16),
                           border: Border.all(
                             color: isSelected ? colors.primary : colors.divider,
@@ -183,8 +184,9 @@ class _SearchPanelState extends ConsumerState<SearchPanel> {
                           category.label,
                           style: TextStyle(
                             fontSize: 12,
-                            fontWeight:
-                                isSelected ? FontWeight.w600 : FontWeight.normal,
+                            fontWeight: isSelected
+                                ? FontWeight.w600
+                                : FontWeight.normal,
                             color: isSelected
                                 ? colors.onPrimary
                                 : colors.textPrimary,
@@ -253,7 +255,8 @@ class _SearchPanelState extends ConsumerState<SearchPanel> {
                           ),
                           const SizedBox(height: 16),
                           OutlinedButton.icon(
-                            onPressed: () => _performSearch(_searchController.text),
+                            onPressed: () =>
+                                _performSearch(_searchController.text),
                             icon: const Icon(Icons.refresh, size: 16),
                             label: const Text('Try Again'),
                           ),
@@ -401,8 +404,7 @@ class _SearchPanelState extends ConsumerState<SearchPanel> {
                                     decoration: BoxDecoration(
                                       color: colors.primaryBg,
                                       borderRadius: BorderRadius.circular(4),
-                                      border:
-                                          Border.all(color: colors.divider),
+                                      border: Border.all(color: colors.divider),
                                     ),
                                     child: Text(
                                       '# ${item.conversationTitle}',
@@ -431,7 +433,8 @@ class _SearchPanelState extends ConsumerState<SearchPanel> {
                                 item.content,
                                 style: TextStyle(
                                   fontSize: 13,
-                                  color: colors.textPrimary.withValues(alpha: 0.85),
+                                  color: colors.textPrimary
+                                      .withValues(alpha: 0.85),
                                   height: 1.35,
                                 ),
                                 maxLines: 3,
