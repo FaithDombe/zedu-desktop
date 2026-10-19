@@ -23,13 +23,15 @@ class SearchResultItem {
 
   factory SearchResultItem.fromJson(Map<String, dynamic> json) {
     // 1. Resolve ID
-    final id = json['id']?.toString() ??
+    final id =
+        json['id']?.toString() ??
         json['_id']?.toString() ??
         json['message_id']?.toString() ??
         '';
 
     // 2. Resolve Content / Text
-    final content = json['content'] as String? ??
+    final content =
+        json['content'] as String? ??
         json['text'] as String? ??
         json['message'] as String? ??
         json['body'] as String? ??
@@ -43,15 +45,18 @@ class SearchResultItem {
 
     if (json['author'] is Map<String, dynamic>) {
       final author = json['author'] as Map<String, dynamic>;
-      authorName = author['name'] as String? ??
+      authorName =
+          author['name'] as String? ??
           author['username'] as String? ??
           author['email'] as String? ??
           'Member';
-      authorAvatar = author['avatar_url'] as String? ??
+      authorAvatar =
+          author['avatar_url'] as String? ??
           author['profile_picture'] as String?;
     } else if (json['user'] is Map<String, dynamic>) {
       final user = json['user'] as Map<String, dynamic>;
-      authorName = user['name'] as String? ??
+      authorName =
+          user['name'] as String? ??
           user['username'] as String? ??
           user['email'] as String? ??
           'Member';
@@ -65,7 +70,8 @@ class SearchResultItem {
 
     // 4. Resolve Timestamp
     String formattedTime = 'Recently';
-    final rawTime = json['created_at'] ??
+    final rawTime =
+        json['created_at'] ??
         json['timestamp'] ??
         json['createdAt'] ??
         json['date'];
@@ -94,24 +100,29 @@ class SearchResultItem {
     }
 
     // 5. Resolve Conversation
-    final conversationId = json['conversation_id']?.toString() ??
+    final conversationId =
+        json['conversation_id']?.toString() ??
         json['channel_id']?.toString() ??
         json['dm_id']?.toString() ??
         json['recipient_id']?.toString();
 
     final channel = json['channel'];
-    final channelName =
-        channel is Map<String, dynamic> ? channel['name'] as String? : null;
+    final channelName = channel is Map<String, dynamic>
+        ? channel['name'] as String?
+        : null;
 
-    final conversationTitle = json['conversation_title'] as String? ??
+    final conversationTitle =
+        json['conversation_title'] as String? ??
         json['channel_name'] as String? ??
         channelName;
 
-    final rawType = json['type'] as String? ??
+    final rawType =
+        json['type'] as String? ??
         json['conversation_type'] as String? ??
         'channel';
 
-    final category = json['category'] as String? ??
+    final category =
+        json['category'] as String? ??
         (json['file_url'] != null
             ? 'file'
             : (json['is_channel'] == true ? 'channel' : 'message'));

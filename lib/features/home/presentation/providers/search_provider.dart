@@ -1,5 +1,6 @@
 import 'package:zedu/core/core.dart';
 import 'package:zedu/features/features.dart';
+
 import '../../data/repositories/search_repository_impl.dart';
 
 final searchRepositoryProvider = Provider<SearchRepository>((ref) {
@@ -128,5 +129,6 @@ class SearchNotifier extends Notifier<SearchState> {
   }
 }
 
-final searchNotifierProvider =
-    NotifierProvider<SearchNotifier, SearchState>(SearchNotifier.new);
+final searchNotifierProvider = NotifierProvider<SearchNotifier, SearchState>(
+  SearchNotifier.new,
+);

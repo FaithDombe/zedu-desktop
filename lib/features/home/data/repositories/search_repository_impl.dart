@@ -1,4 +1,5 @@
 import 'package:zedu/core/core.dart';
+
 import '../../domain/repositories/search_repository.dart';
 import '../models/search_result_item.dart';
 

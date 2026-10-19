@@ -1,4 +1,5 @@
 import '../../../helpers/helpers.dart';
+
 import 'package:zedu/core/core.dart';
 import 'package:zedu/features/features.dart';
 import 'package:zedu/features/home/data/repositories/search_repository_impl.dart';
@@ -81,62 +82,65 @@ void main() {
     });
 
     test(
-        'returns Success<List<SearchResultItem>> when API returns search results',
-        () async {
-      final mockData = {
-        'status': 'success',
-        'data': [
-          {
-            'id': 'msg_001',
-            'content': 'Found discussion about flutter desktop',
-            'author': {'name': 'Faith Dombe'},
-            'channel_name': 'desktop-dev',
-            'conversation_id': 'chan_1',
-          },
-          {
-            'id': 'msg_002',
-            'content': 'Bug report for search panel',
-            'author': {'name': 'Mark Essien'},
-            'channel_name': 'general',
-            'conversation_id': 'chan_2',
-          },
-        ],
-      };
+      'returns Success<List<SearchResultItem>> when API returns search results',
+      () async {
+        final mockData = {
+          'status': 'success',
+          'data': [
+            {
+              'id': 'msg_001',
+              'content': 'Found discussion about flutter desktop',
+              'author': {'name': 'Faith Dombe'},
+              'channel_name': 'desktop-dev',
+              'conversation_id': 'chan_1',
+            },
+            {
+              'id': 'msg_002',
+              'content': 'Bug report for search panel',
+              'author': {'name': 'Mark Essien'},
+              'channel_name': 'general',
+              'conversation_id': 'chan_2',
+            },
+          ],
+        };
 
-      when(() => mockApiService.get<Map<String, dynamic>>(
+        when(
+          () => mockApiService.get<Map<String, dynamic>>(
             path: any(named: 'path'),
             queryParameters: any(named: 'queryParameters'),
-          )).thenAnswer((_) async => ApiResponseModel(
-            data: mockData,
-            statusCode: 200,
-          ));
+          ),
+        ).thenAnswer(
+          (_) async => ApiResponseModel(data: mockData, statusCode: 200),
+        );
 
-      final result = await repository.search(
-        query: 'desktop',
-        orgId: 'org_123',
-      );
+        final result = await repository.search(
+          query: 'desktop',
+          orgId: 'org_123',
+        );
 
-      expect(result, isA<Success<List<SearchResultItem>>>());
-      final list = (result as Success<List<SearchResultItem>>).value;
-      expect(list.length, 2);
-      expect(list[0].id, 'msg_001');
-      expect(list[0].authorName, 'Faith Dombe');
-      expect(list[1].authorName, 'Mark Essien');
-    });
+        expect(result, isA<Success<List<SearchResultItem>>>());
+        final list = (result as Success<List<SearchResultItem>>).value;
+        expect(list.length, 2);
+        expect(list[0].id, 'msg_001');
+        expect(list[0].authorName, 'Faith Dombe');
+        expect(list[1].authorName, 'Mark Essien');
+      },
+    );
 
     test('returns Failure when API request throws ApiFailure', () async {
-      when(() => mockApiService.get<Map<String, dynamic>>(
-            path: any(named: 'path'),
-            queryParameters: any(named: 'queryParameters'),
-          )).thenThrow(ApiFailure(
-        message: 'Search service temporarily unavailable',
-        statusCode: 503,
-      ));
-
-      final result = await repository.search(
-        query: 'error',
-        orgId: 'org_123',
+      when(
+        () => mockApiService.get<Map<String, dynamic>>(
+          path: any(named: 'path'),
+          queryParameters: any(named: 'queryParameters'),
+        ),
+      ).thenThrow(
+        ApiFailure(
+          message: 'Search service temporarily unavailable',
+          statusCode: 503,
+        ),
       );
+
+      final result = await repository.search(query: 'error', orgId: 'org_123');
 
       expect(result, isA<Failure<List<SearchResultItem>>>());
       final failure = result as Failure<List<SearchResultItem>>;

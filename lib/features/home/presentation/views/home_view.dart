@@ -53,9 +53,9 @@ class _HomeViewState extends ConsumerState<HomeView> {
                           top: 0,
                           bottom: 0,
                           child: SearchPanel(
-                            onClose: () => ref
-                                .read(searchPanelProvider.notifier)
-                                .state = false,
+                            onClose: () =>
+                                ref.read(searchPanelProvider.notifier).state =
+                                    false,
                           ),
                         ),
                     ],

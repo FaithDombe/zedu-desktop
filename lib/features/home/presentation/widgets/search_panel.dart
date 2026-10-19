@@ -118,12 +118,18 @@ class _SearchPanelState extends ConsumerState<SearchPanel> {
               decoration: InputDecoration(
                 hintText: 'Search messages, channels, files...',
                 hintStyle: TextStyle(color: colors.textHint, fontSize: 13),
-                prefixIcon:
-                    Icon(Icons.search, color: colors.textHint, size: 20),
+                prefixIcon: Icon(
+                  Icons.search,
+                  color: colors.textHint,
+                  size: 20,
+                ),
                 suffixIcon: _searchController.text.isNotEmpty
                     ? IconButton(
-                        icon:
-                            Icon(Icons.clear, size: 18, color: colors.textHint),
+                        icon: Icon(
+                          Icons.clear,
+                          size: 18,
+                          color: colors.textHint,
+                        ),
                         onPressed: _clearSearch,
                         splashRadius: 16,
                         tooltip: 'Clear input',
@@ -173,8 +179,9 @@ class _SearchPanelState extends ConsumerState<SearchPanel> {
                           vertical: 6,
                         ),
                         decoration: BoxDecoration(
-                          color:
-                              isSelected ? colors.primary : colors.background,
+                          color: isSelected
+                              ? colors.primary
+                              : colors.background,
                           borderRadius: BorderRadius.circular(16),
                           border: Border.all(
                             color: isSelected ? colors.primary : colors.divider,
@@ -369,8 +376,9 @@ class _SearchPanelState extends ConsumerState<SearchPanel> {
                               children: [
                                 CircleAvatar(
                                   radius: 12,
-                                  backgroundColor:
-                                      colors.primary.withValues(alpha: 0.15),
+                                  backgroundColor: colors.primary.withValues(
+                                    alpha: 0.15,
+                                  ),
                                   child: Text(
                                     item.authorName.isNotEmpty
                                         ? item.authorName[0].toUpperCase()
@@ -433,8 +441,9 @@ class _SearchPanelState extends ConsumerState<SearchPanel> {
                                 item.content,
                                 style: TextStyle(
                                   fontSize: 13,
-                                  color: colors.textPrimary
-                                      .withValues(alpha: 0.85),
+                                  color: colors.textPrimary.withValues(
+                                    alpha: 0.85,
+                                  ),
                                   height: 1.35,
                                 ),
                                 maxLines: 3,
